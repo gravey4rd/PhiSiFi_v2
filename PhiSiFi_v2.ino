@@ -9,15 +9,20 @@ extern "C" {
 }
 
 // =============================================================================
-//    Improved version of p3tr0s/PhiSiFi
-//    Developed by gravey4rd.
-//Significant changes:
-//  The user interface and page methods have been improved.
-//  Fixed the issue where the deauthentication attack would stop upon refreshing the admin page.
-//  Resolved the problem where the deauthentication attack would halt if the modem was reset during the process, using a new method.
-//  The EvilTwin feature has been optimized.
-//  Fixed an issue to make the Evil Twin attack automatically shut down if the victim turns off the modem and attempts to enter a password.
-//  etc.
+//About The PhiSiFi_v2
+//This project is a significantly improved version based on the original PhiSiFi project by p3tr0s. It builds upon the foundation of the original project, adding modern technologies and new features.
+//
+//Acknowledgements
+//A special thanks to p3tr0s for the foundational work on the original PhiSiFi project.
+//
+//The current version has been enriched by 'gravey4rd' with the following key improvements:
+//    The user interface and page methods have been improved.
+//    Fixed the issue where the deauthentication attack would stop upon refreshing the admin page.
+//    Resolved the problem where the deauthentication attack would halt if the modem was reset during the process, using a new method.
+//    The EvilTwin interface and system have been optimized.
+//    Enabled the EvilTwin and Deauthentication attacks to be run simultaneously.
+//    The login notification that prompts the victim to sign in during an EvilTwin attack has been optimized.
+//    Ensured that the EvilTwin attack automatically shuts down if the victim turns off the modem and attempts to enter a password on the EvilTwin network.
 // =============================================================================
 
 typedef struct {
