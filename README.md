@@ -14,7 +14,7 @@ A special thanks to p3tr0s for the foundational work on the original PhiSiFi pro
 5. Enabled the EvilTwin and Deauthentication attacks to be run simultaneously.
 6. The login notification that prompts the victim to sign in during an EvilTwin attack has been optimized.
 7. Ensured that the EvilTwin attack automatically shuts down if the victim turns off the modem and attempts to enter a password on the EvilTwin network.
-8. etc.
+8. Number of networks shown in network scan increased from 16 to 20
 
 ## DISCLAIMER
 The source code given in this public repo is for educational use only and should only be used against your own networks and devices!<br>
