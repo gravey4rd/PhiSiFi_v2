@@ -23,7 +23,7 @@ Please check the legal regulations in your country before using it.
 2. In Arduino go to `File` -> `Preferences` add this URL to `Additional Boards Manager URLs` ->
    `https://raw.githubusercontent.com/SpacehuhnTech/arduino/main/package_spacehuhn_index.json`  
 3. In Arduino go to `Tools` -> `Board` -> `Boards Manager` search for and install the `deauther` package  
-4. Download and open [PhiSiFi](https://github.com/p3tr0s/PhiSiFi/blob/main/ESP8266_PhiSiFi.ino) with Arduino IDE
+4. Download and open [PhiSiFi_v2](https://github.com/gravey4rd/PhiSiFi_v2/blob/main/PhiSiFi_v2.ino) with Arduino IDE
 6. Select an `ESP8266 Deauther` board in Arduino under `tools` -> `board`
 7. Connect your device and select the serial port in Arduino under `tools` -> `port`
 8. Click Upload button
