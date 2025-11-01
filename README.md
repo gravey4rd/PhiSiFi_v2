@@ -1,16 +1,16 @@
-## PhiSiFi_v2
+# PhiSiFi_v2
 *This project is a significantly improved version based on the original PhiSiFi project by p3tr0s. It builds upon the foundation of the original project, adding modern technologies and new features.
 
-#Acknowledgements
+##Acknowledgements
 A special thanks to p3tr0s for the foundational work on the original PhiSiFi project.
 
 ## FEATURES :
-*The user interface and page methods have been improved.
-*Fixed the issue where the deauthentication attack would stop upon refreshing the admin page.
-*Resolved the problem where the deauthentication attack would halt if the modem was reset during the process, using a new method.
-*The EvilTwin feature has been optimized.
-*The notification prompting the victim to log in during an EvilTwin attack has been optimized.
-*Fixed an issue to make the Evil Twin attack automatically shut down if the victim turns off the modem and attempts to enter a password.
+* The user interface and page methods have been improved.
+* Fixed the issue where the deauthentication attack would stop upon refreshing the admin page.
+* Resolved the problem where the deauthentication attack would halt if the modem was reset during the process, using a new method.
+* The EvilTwin feature has been optimized.
+* The notification prompting the victim to log in during an EvilTwin attack has been optimized.
+* Fixed an issue to make the Evil Twin attack automatically shut down if the victim turns off the modem and attempts to enter a password.
 *etc.
 
 ## DISCLAIMER
