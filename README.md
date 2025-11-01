@@ -1,5 +1,5 @@
 # PhiSiFi_v2
-*This project is a significantly improved version based on the original PhiSiFi project by p3tr0s. It builds upon the foundation of the original project, adding modern technologies and new features.
+This project is a significantly improved version based on the original PhiSiFi project by p3tr0s. It builds upon the foundation of the original project, adding modern technologies and new features.
 
 ## Acknowledgements
 A special thanks to p3tr0s for the foundational work on the original PhiSiFi project.
