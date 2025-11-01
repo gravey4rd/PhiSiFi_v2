@@ -1,4 +1,4 @@
-# PhiSiFi_v2
+# PhiSiFi_v2 by [gravey4rd](https://github.com/gravey4rd)
 This project is a significantly improved version based on the original PhiSiFi project by p3tr0s. It builds upon the foundation of the original project, adding modern technologies and new features.
 
 <img width="1819" height="1079" alt="Adsızsdfsd" src="https://github.com/user-attachments/assets/38a7639b-9a03-43f7-b187-c4d773fe24e4" />
