@@ -29,6 +29,7 @@ typedef struct {
   String ssid;
   uint8_t ch;
   uint8_t bssid[6];
+  int32_t rssi;
 } _Network;
 
 const byte DNS_PORT = 53;
@@ -54,6 +55,31 @@ String bytesToStr(const uint8_t* b, uint32_t size) { String str; for (uint32_t i
 void handleEmpty() { webServer.send(204, "text/plain", ""); }
 void handleRedirect() { webServer.sendHeader("Location", "http://192.168.4.1/"); webServer.send(302, "text/plain", "Redirecting..."); }
 
+String getSignalQualityHTML(int32_t rssi) {
+  String qualityText = "";
+  String qualityColor = "";
+
+  if (rssi >= -55) {
+    qualityText = "Excellent";
+    qualityColor = "#28a745"; 
+  } else if (rssi >= -65) {
+    qualityText = "Good";
+    qualityColor = "#17a2b8"; 
+  } else if (rssi >= -75) {
+    qualityText = "Fair";
+    qualityColor = "#ffc107"; 
+  } else if (rssi >= -85) {
+    qualityText = "Weak";
+    qualityColor = "#fd7e14"; 
+  } else {
+    qualityText = "Very Weak";
+    qualityColor = "#dc3545"; 
+  }
+
+  return "<p><strong>Signal:</strong> <span style='color:" + qualityColor + "; font-weight:bold;'>" + qualityText + " (" + String(rssi) + " dBm)</span></p>";
+}
+
+
 void performScan() {
   int n = WiFi.scanNetworks();
   is_target_visible = false;
@@ -65,6 +91,7 @@ void performScan() {
       _networks[i].ssid = WiFi.SSID(i);
       memcpy(_networks[i].bssid, WiFi.BSSID(i), 6);
       _networks[i].ch = WiFi.channel(i);
+      _networks[i].rssi = WiFi.RSSI(i);
 
       if (_selectedNetwork.ssid != "" && _networks[i].ssid == _selectedNetwork.ssid) {
         is_target_visible = true;
@@ -171,7 +198,12 @@ void handleAdmin() {
   for (int i = 0; i < 20; ++i) {
     if (_networks[i].ssid == "") break;
     String card_html = "<div class='grid-card'><h3>" + _networks[i].ssid + "</h3>";
-    card_html += "<div class='info'><p><strong>BSSID:</strong> " + bytesToStr(_networks[i].bssid, 6) + "</p><p><strong>Channel:</strong> " + String(_networks[i].ch) + "</p></div>";
+    card_html += "<div class='info'>";
+    card_html += "<p><strong>BSSID:</strong> " + bytesToStr(_networks[i].bssid, 6) + "</p>";
+    card_html += "<p><strong>Channel:</strong> " + String(_networks[i].ch) + "</p>";
+    card_html += getSignalQualityHTML(_networks[i].rssi); 
+    card_html += "</div>";
+
     card_html += "<div class='button-wrapper'><form method='POST' action='/select_ap'><input type='hidden' name='ap' value='" + bytesToStr(_networks[i].bssid, 6) + "'>";
     if (bytesToStr(_selectedNetwork.bssid, 6) == bytesToStr(_networks[i].bssid, 6)) { card_html += "<button class='selected-btn' disabled>Selected</button>"; } 
     else { card_html += "<button class='select-btn'>Select</button>"; }
